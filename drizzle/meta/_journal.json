@@ -1,0 +1,69 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1792804601325,
+      "tag": "0000_loud_blindfold",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1792805298221,
+      "tag": "0001_sour_shockwave",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792806187645,
+      "tag": "0002_colossal_glorian",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1792809847747,
+      "tag": "0003_sloppy_cable",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1792819058421,
+      "tag": "0004_concerned_ben_urich",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1792820079007,
+      "tag": "0005_clumsy_venus",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1792822570838,
+      "tag": "0006_blushing_mulholland_black",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1792845704879,
+      "tag": "0004_lumina_generations",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1792845704880,
+      "tag": "0007_lumina_capacity",
+      "breakpoints": true
+    }
+  ]
+}

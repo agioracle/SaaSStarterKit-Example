@@ -1,0 +1,1 @@
+CREATE INDEX `payment_missing_projection_idx` ON `payment_checkouts` (`user_id`) WHERE "payment_checkouts"."snapshot" IS NULL;

@@ -1,0 +1,72 @@
+# Copy to .dev.vars for LOCAL development. These values are not browser-exposed.
+# Use your own strong secret, at least 32 characters; placeholders are rejected.
+BETTER_AUTH_SECRET=
+APP_URL=http://localhost:3000
+APP_ENV=development
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+# Select mail/newsletter/notification providers in src/config/website.ts, not here.
+# Address aliases are used only when websiteConfig.mail.fromEmail/supportEmail are empty.
+MAIL_FROM_EMAIL=
+CLOUDFLARE_ACCOUNT_ID=
+CLOUDFLARE_EMAIL_API_TOKEN=
+RESEND_API_KEY=
+BEEHIIV_API_KEY=
+BEEHIIV_PUBLICATION_ID=
+MAILCHEAP_API_KEY=
+MAILCHEAP_NEWSLETTER_ID=
+# Select current provider publicly with VITE_PAYMENT_PROVIDER; keep test/live D1 separate.
+PAYMENT_MODE=test
+# Optional stable deployment label; defaults to APP_URL origin. Never switch on an occupied DB.
+PAYMENT_NAMESPACE=
+# Comma-separated retained providers for historical management and webhooks.
+# Preserve retired price mappings per provider as documented in src/payment/README.md.
+STRIPE_HISTORICAL_PLANS=
+CREEM_HISTORICAL_PLANS=
+WAFFO_HISTORICAL_PLANS=
+STRIPE_API_VERSION=
+PAYMENT_LEGACY_PROVIDERS=
+PAYMENT_NEW_CHECKOUTS_ENABLED=true
+# Bounded cron drains existing user-authorized deletion manifests and limiter/AI housekeeping.
+MAINTENANCE_ENABLED=true
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+STRIPE_PRO_MONTHLY_PRICE_ID=
+STRIPE_PRO_YEARLY_PRICE_ID=
+STRIPE_LIFETIME_PRICE_ID=
+CREEM_API_KEY=
+CREEM_WEBHOOK_SECRET=
+CREEM_PRO_MONTHLY_PRICE_ID=
+CREEM_PRO_YEARLY_PRICE_ID=
+CREEM_LIFETIME_PRICE_ID=
+WAFFO_STORE_ID=
+# Required store ownership boundary. SSO is separate opt-in; default Magic Link portal.
+WAFFO_PORTAL_SSO=false
+WAFFO_MERCHANT_ID=
+WAFFO_PRIVATE_KEY=
+WAFFO_PRO_MONTHLY_PRICE_ID=
+WAFFO_PRO_YEARLY_PRICE_ID=
+WAFFO_LIFETIME_PRICE_ID=
+CLOUDFLARE_AI_API_TOKEN=
+FAL_API_KEY=
+EXA_API_KEY=
+LINKUP_API_KEY=
+CERAMIC_API_KEY=
+DISCORD_WEBHOOK_URL=
+FEISHU_WEBHOOK_URL=
+FEISHU_WEBHOOK_SECRET=
+# Comma-separated exact chrome-extension:// IDs; empty means extension auth disabled.
+EXTENSION_ORIGINS=
+
+GOOGLE_EXTENSION_CLIENT_ID=
+
+MAIL_SUPPORT_EMAIL=
+
+# Lumina product generation remains disabled until BOTH controls are enabled:
+# websiteConfig.ai.enabled=true (review finite budgets) AND this runtime switch.
+IMAGE_GENERATION_ENABLED=false
+IMAGE_FREE_MONTHLY_LIMIT=10
+IMAGE_PRO_MONTHLY_LIMIT=200
+IMAGE_FREE_RETAINED_LIMIT=30
+IMAGE_PRO_RETAINED_LIMIT=500
+IMAGE_MAX_CONCURRENT=2

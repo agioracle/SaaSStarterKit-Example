@@ -1,0 +1,1 @@
+ALTER TABLE `user` ADD `newsletter_consent` integer DEFAULT false NOT NULL;

@@ -1,0 +1,1 @@
+CREATE INDEX `userfiles_owner_cursor_idx` ON `userfiles` (`user_id`,`created_at`,`id`);
