@@ -1,7 +1,7 @@
 import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
-import { Children, isValidElement, type ReactElement, type ReactNode } from 'react';
+import { createElement, Children, isValidElement, type ReactElement, type ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { QueryClient } from '@tanstack/react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { createMemoryHistory, createRootRoute, createRoute, createRouter, type AnyRouter } from '@tanstack/react-router';
 
 // Controlled component hooks, with real Router and QueryClient underneath.
@@ -58,7 +58,7 @@ import type { PaymentCheckoutStatus } from '../src/payment/types';
 
 const originalLocale = getLocale;
 function render<T>(component: () => T): T { harness.cursor = 0; return component(); }
-function markup(component: () => ReactNode) { return renderToStaticMarkup(render(component)); }
+function markup(component: () => ReactNode) { return renderToStaticMarkup(createElement(QueryClientProvider, { client: harness.queryClient }, render(component))); }
 function elements(node: ReactNode): ReactElement<Record<string, any>>[] {
   return Children.toArray(node).flatMap((child) => isValidElement<Record<string, any>>(child)
     ? [child, ...elements(child.props.children)] : []);

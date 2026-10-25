@@ -1,3 +1,10 @@
+// Only the loopback port is configurable; fixture hosts and data stay isolated.
+export function fixturePort() {
+ const value = process.env.E2E_PORT || "4173";
+ if (!/^\d+$/.test(value) || Number(value) < 1024 || Number(value) > 65535) throw Error("E2E_PORT must be a local unprivileged port.");
+ return value;
+}
+export const fixtureOrigin = `http://127.0.0.1:${fixturePort()}`;
 import { existsSync, readdirSync, mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 export function assertIsolatedTestCheckout() {

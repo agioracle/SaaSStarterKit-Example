@@ -1,3 +1,4 @@
+import { fixtureOrigin } from "./environment";
 import { test, expect } from '@playwright/test';
 
 // Run ONLY in the independent checkout prepared by tests/manual/prepare-browser-fixture.ts.
@@ -28,13 +29,13 @@ test('@captured-browser registration, verification, sign-in, reset and sign-out 
   await page.goto(await mailLink('/verify-email'));
   await expect(page).toHaveURL(/\/studio$/);
   await expect(page.locator('.sidebar-user strong')).toHaveText('Browser QA');
-  await page.request.post('/api/auth/sign-out', { headers: { origin: 'http://127.0.0.1:4173' }, data: {} });
+  await page.request.post('/api/auth/sign-out', { headers: { origin: fixtureOrigin }, data: {} });
   await page.goto('/auth/login');
   await page.getByLabel('Email address', { exact: true }).fill(email);
   await page.getByLabel('Password', { exact: true }).fill(password);
   await page.getByRole('button', { name: 'Sign in', exact: true }).click();
   await expect(page).toHaveURL(/\/studio$/);
-  await page.request.post('/api/auth/sign-out', { headers: { origin: 'http://127.0.0.1:4173' }, data: {} });
+  await page.request.post('/api/auth/sign-out', { headers: { origin: fixtureOrigin }, data: {} });
   await page.goto('/auth/forgot-password');
   await page.getByLabel('Email address', { exact: true }).fill(email);
   await page.getByRole('button', { name: 'Send reset instructions', exact: true }).click();

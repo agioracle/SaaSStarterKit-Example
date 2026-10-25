@@ -1,5 +1,36 @@
 /** Central product copy. Locale parity is checked by TypeScript and product-copy tests. */
 export const productEnglish = {
+	pending_hint:
+		"This page checks the existing request. Leaving does not cancel it; reopen its details to continue.",
+	settings_group: "Model & composition",
+	form_hint: "Ctrl / ⌘ + Enter to create",
+	account_plans: "Explore example plans",
+	account_active: "Active requests",
+	account_retained: "Saved records",
+	account_plan: "Current plan",
+	account_allowance: "Your workspace allowance",
+	home_models:
+		"Model access is available when configured by your workspace operator.",
+	home_close: "Your next image starts with a few words.",
+	home_honest_text:
+		"Queued, ready, failed or uncertain. Check the existing request instead of paying for another one by accident.",
+	home_honest: "Every request has a real state",
+	home_private_text:
+		"Download your original image, revisit its settings, or reuse the prompt. Your private files are checked against your account on every request.",
+	home_private: "A library that belongs to you",
+	home_process_intro:
+		"The useful parts stay together: the image, the words that started it, and a clear record of what happened.",
+	home_process: "Make it. Keep it. Return to it.",
+	home_try: "Try this direction",
+	home_recipe: "Start with this prompt",
+	home_sample: "An original vector study · not AI-generated",
+	home_intro:
+		"A private image studio for making, keeping and returning to your ideas. One prompt. Two model providers. A recipe you can use again.",
+	home_title: "From a thought to a keeper.",
+	fit_image: "Fit image",
+	inspect_image: "Enlarge image",
+	how_allowance_works: "How this allowance works",
+	your_canvas_short: "View result",
 	daily_safety:
 		"Daily deployment safety budgets also apply; these units are not currency.",
 	safety_limit:
@@ -63,9 +94,9 @@ export const productEnglish = {
 	reserved: "reserved",
 	example_workspace_policy_one_image_per_request_confirmed_uncharged_fai:
 		"Example workspace policy. One image per request. Confirmed uncharged failures release their reservation; uncertain requests keep it until resolved.",
-	a_little_space_for_your_next_idea: "A little space for your next idea.",
+	a_little_space_for_your_next_idea: "A place for your next image",
 	your_image_will_appear_here_start_with_a_few_words_and_see_where_they_:
-		"Your image will appear here. Start with a few words and see where they take you.",
+		"Write a prompt and choose a model. Your saved result and its real status will appear here.",
 	decorative_illustration_not_a_generated_result:
 		"Decorative illustration, not a generated result",
 	image_could_not_be_loaded: "Image could not be loaded",
@@ -146,9 +177,9 @@ export const productEnglish = {
 	delete_permanently: "Delete permanently",
 	keep_it: "Keep it",
 	the_things_you_make: "THE THINGS YOU MAKE",
-	your_collection_of_possibilities: "Your collection of possibilities.",
+	your_collection_of_possibilities: "Your library",
 	every_image_every_starting_point_a_little_archive_of_your_imagination:
-		"Every image, every starting point. A little archive of your imagination.",
+		"Images, prompts and settings. Kept together, private to you.",
 	create_something_new: "Create something new",
 	filter_creations: "Filter creations",
 	all_creations: "All creations",
@@ -163,10 +194,10 @@ export const productEnglish = {
 	your_library_could_not_be_loaded: "Your library could not be loaded.",
 	try_again: "Try again",
 	an_open_invitation_2: "AN OPEN INVITATION",
-	your_first_image_is_waiting: "Your first image is waiting",
-	to_be_imagined: "to be imagined.",
+	your_first_image_is_waiting: "Make your first image",
+	to_be_imagined: "Keep its recipe.",
 	there_s_nothing_here_yet_and_that_s_a_lovely_place_to_start_head_to_th:
-		"There’s nothing here yet, and that’s a lovely place to start. Head to the studio and follow an idea.",
+		"Start in the studio. Finished images and requests you need to revisit will stay here.",
 	create_your_first_image: "Create your first image",
 	view_creation: "View creation",
 	delete_creation: "Delete creation",
@@ -180,9 +211,9 @@ export const productEnglish = {
 	this_creation_could_not_be_opened_it_may_have_been_deleted_or_may_not_:
 		"This creation could not be opened. It may have been deleted, or may not belong to this account.",
 	from_your_imagination: "FROM YOUR IMAGINATION",
-	a_closer_look: "A closer look.",
+	a_closer_look: "Creation details",
 	original_output: "Original output",
-	behind_the_image: "Behind the image",
+	behind_the_image: "Recipe & details",
 	the_prompt: "The prompt",
 	could_not_copy_automatically_select_the_prompt_text_and_copy_it_manual:
 		"Could not copy automatically. Select the prompt text and copy it manually.",
@@ -200,15 +231,15 @@ export const productEnglish = {
 	request_id: "Request ID",
 	delete_this_creation_2: "Delete this creation",
 	a_little_more_room_to_create: "A LITTLE MORE ROOM TO CREATE",
-	make_space_for: "Make space for",
-	your_imagination: "your imagination.",
+	make_space_for: "Room for",
+	your_imagination: "your next idea.",
 	an_example_plan_catalog_for_this_workspace_your_operator_configures_pr:
 		"An example plan catalog for this workspace. Your operator configures prices and image allowances before launch.",
 	monthly: "Monthly",
 	yearly: "Yearly",
 	paid_checkout_is_not_enabled_these_are_example_prices_not_an_active_of:
 		"Paid checkout is not enabled. These are example prices, not an active offer. You can still create an account; generation also requires a configured model provider.",
-	a_little_more_possibility: "A little more possibility",
+	a_little_more_possibility: "More room to create",
 	to_get_started: "to get started",
 	month: "/ month",
 	year: "/ year",
@@ -237,9 +268,9 @@ export const productEnglish = {
 		"Your browser could not save a recovery key. No request was sent. Enable session storage for this site before trying again.",
 	the_connection_was_interrupted: "The connection was interrupted.",
 	your_creative_space: "YOUR CREATIVE SPACE",
-	a_good_place_to_begin: "A good place to begin.",
+	a_good_place_to_begin: "Image studio",
 	follow_a_thought_find_a_new_direction_make_something_yours:
-		"Follow a thought. Find a new direction. Make something yours.",
+		"Your prompt, your settings, one private image.",
 	my_library: "My library",
 	check_library: "Check library",
 	we_couldn_t_load_your_workspace_settings:
@@ -248,7 +279,7 @@ export const productEnglish = {
 		"Image generation is not connected yet.",
 	ask_your_workspace_operator_to_enable_and_configure_cloudflare_workers:
 		"Ask your workspace operator to enable and configure Cloudflare Workers AI or fal.ai. No requests will be sent while unavailable.",
-	the_starting_point: "The starting point",
+	the_starting_point: "Your recipe",
 	your_prompt: "Your prompt",
 	a_quiet_little_house_by_the_sea_warm_morning_light_soft_film_grain:
 		"A quiet little house by the sea, warm morning light, soft film grain…",
@@ -288,8 +319,8 @@ export const productEnglish = {
 	credit: "credit",
 	one_image_saved_privately_in_your_library:
 		"One image. Saved privately in your library.",
-	your_canvas: "Your canvas",
-	ready_when_you_are: "READY WHEN YOU ARE",
+	your_canvas: "Working proof",
+	ready_when_you_are: "Not submitted",
 	the_outcome_is_not_confirmed: "The outcome is not confirmed.",
 	your_request_may_already_exist_recover_the_exact_same_request_without_:
 		"Your request may already exist. Recover the exact same request, without creating another generation, or check your library.",
@@ -311,6 +342,11 @@ export const productEnglish = {
 	cookies: "Cookies",
 	how_it_works: "How it works",
 	pricing: "Pricing",
+	unknown_operator:
+		"Automatic status recovery is unavailable for this request. Do not submit a duplicate. Give the request ID below to your workspace operator.",
+	unknown_reserved_operator:
+		"This credit stays reserved until the outcome is verified by your workspace operator.",
+	saved_request: "Saved request",
 	free: "Free",
 	pro: "Pro",
 	pro_annual: "Pro annual",
@@ -342,6 +378,36 @@ export const productEnglish = {
 } as const;
 export type ProductMessageKey = keyof typeof productEnglish;
 export const productChinese = {
+	pending_hint:
+		"本页只查询既有请求。离开页面不会取消生成；重新打开详情可继续查看。",
+	settings_group: "模型与构图",
+	form_hint: "Ctrl / ⌘ + Enter 创建",
+	account_plans: "查看示例套餐",
+	account_active: "活动请求",
+	account_retained: "保留记录",
+	account_plan: "当前套餐",
+	account_allowance: "工作区额度",
+	home_models: "模型需由工作区运营者配置后启用。",
+	home_close: "下一张作品，始于几句话。",
+	home_honest_text:
+		"排队、完成、失败或结果不明。继续查看同一请求，避免意外重复提交。",
+	home_honest: "每个请求，都有真实状态",
+	home_private_text:
+		"下载原图、查看参数，或复用提示词。每一次访问私有文件，都会校验当前账户。",
+	home_private: "只属于你的作品库",
+	home_process_intro:
+		"有用的信息始终相邻：图片、最初的提示词，以及清楚的任务记录。",
+	home_process: "创作，保存，再次出发。",
+	home_try: "尝试这个方向",
+	home_recipe: "从这句提示词开始",
+	home_sample: "原创矢量习作 · 并非 AI 生成",
+	home_intro:
+		"一个用来创作、保存和重拾灵感的私有图片工作室。从一句提示词开始，选择模型，让每张作品都有可复用的配方。",
+	home_title: "把一个念头，留成一张作品。",
+	fit_image: "适应画布",
+	inspect_image: "放大图片",
+	how_allowance_works: "额度如何计算",
+	your_canvas_short: "查看结果",
 	daily_safety: "同时受每日部署安全预算约束；安全单位不是实际币值。",
 	safety_limit: "每日 AI 安全预算或工作区并发已达上限，未发起新的供应商请求。",
 	original_abstract_illustration_not_an_ai_generated_image:
@@ -403,9 +469,9 @@ export const productChinese = {
 	reserved: "已预留",
 	example_workspace_policy_one_image_per_request_confirmed_uncharged_fai:
 		"工作空间示例策略。每次请求生成一张图片。确认未计费的失败任务释放预留额度；状态不明的任务会保留额度，直到结果确认。",
-	a_little_space_for_your_next_idea: "为下一个灵感，留一点空间。",
+	a_little_space_for_your_next_idea: "下一张作品，从这里开始",
 	your_image_will_appear_here_start_with_a_few_words_and_see_where_they_:
-		"图片将在这里出现。先写下几个词，看看灵感会把你带向哪里。",
+		"写下提示词并选择模型。作品与真实任务状态会显示在这里。",
 	decorative_illustration_not_a_generated_result: "装饰插画，并非生成结果",
 	image_could_not_be_loaded: "暂时无法加载图片",
 	your_saved_job_is_still_here_reload_this_page_or_try_downloading_the_i:
@@ -482,9 +548,9 @@ export const productChinese = {
 	delete_permanently: "永久删除",
 	keep_it: "保留",
 	the_things_you_make: "把创作留下来",
-	your_collection_of_possibilities: "收藏每一种可能。",
+	your_collection_of_possibilities: "私有作品库",
 	every_image_every_starting_point_a_little_archive_of_your_imagination:
-		"每一张图片，每一个起点。这里是你的灵感档案。",
+		"图片、提示词与参数保存在一起，仅你可见。",
 	create_something_new: "开始新的创作",
 	filter_creations: "筛选作品",
 	all_creations: "全部作品",
@@ -499,10 +565,10 @@ export const productChinese = {
 	your_library_could_not_be_loaded: "无法加载作品库。",
 	try_again: "重试",
 	an_open_invitation_2: "一份灵感邀请",
-	your_first_image_is_waiting: "你的第一张图片，",
-	to_be_imagined: "等待被想象。",
+	your_first_image_is_waiting: "创作第一张图片",
+	to_be_imagined: "也留下它的配方。",
 	there_s_nothing_here_yet_and_that_s_a_lovely_place_to_start_head_to_th:
-		"这里还没有作品，而空白正是最好的开始。前往工作室，跟随一个灵感。",
+		"从工作室开始。已完成的图片和需要继续查看的请求都会保存在这里。",
 	create_your_first_image: "生成第一张图片",
 	view_creation: "查看作品",
 	delete_creation: "删除作品",
@@ -515,9 +581,9 @@ export const productChinese = {
 	this_creation_could_not_be_opened_it_may_have_been_deleted_or_may_not_:
 		"无法打开此作品。它可能已被删除，或不属于当前账户。",
 	from_your_imagination: "来自你的想象",
-	a_closer_look: "再靠近一点。",
+	a_closer_look: "作品详情",
 	original_output: "原始输出",
-	behind_the_image: "画面背后",
+	behind_the_image: "配方与详情",
 	the_prompt: "提示词",
 	could_not_copy_automatically_select_the_prompt_text_and_copy_it_manual:
 		"无法自动复制，请选中提示词文字并手动复制。",
@@ -535,15 +601,15 @@ export const productChinese = {
 	request_id: "请求编号",
 	delete_this_creation_2: "删除这条作品",
 	a_little_more_room_to_create: "为创作，留多一点空间",
-	make_space_for: "给你的想象，",
-	your_imagination: "多一点空间。",
+	make_space_for: "为创作",
+	your_imagination: "留出空间",
 	an_example_plan_catalog_for_this_workspace_your_operator_configures_pr:
 		"这是当前工作空间的示例套餐。上线前，管理员需要配置价格与图片额度。",
 	monthly: "月付",
 	yearly: "年付",
 	paid_checkout_is_not_enabled_these_are_example_prices_not_an_active_of:
 		"付费结账尚未启用。以下仅为示例价格，并非正在销售的套餐。你仍可注册账户；图片生成还需配置模型服务商。",
-	a_little_more_possibility: "多一点可能性",
+	a_little_more_possibility: "更多创作空间",
 	to_get_started: "开始探索",
 	month: "/ 月",
 	year: "/ 年",
@@ -572,16 +638,16 @@ export const productChinese = {
 		"浏览器无法保存恢复密钥，未发送任何请求。请启用此网站的会话存储后再试。",
 	the_connection_was_interrupted: "连接中断。",
 	your_creative_space: "你的创作空间",
-	a_good_place_to_begin: "灵感，从这里开始。",
+	a_good_place_to_begin: "图片工作室",
 	follow_a_thought_find_a_new_direction_make_something_yours:
-		"跟随一个念头，发现新的方向，创作属于自己的作品。",
+		"写下提示词，选择参数，创作一张私有图片。",
 	my_library: "我的作品库",
 	check_library: "查看作品库",
 	we_couldn_t_load_your_workspace_settings: "无法加载工作空间设置。",
-	image_generation_is_not_connected_yet: "图片生成服务尚未连接。",
+	image_generation_is_not_connected_yet: "图片生成尚未配置。",
 	ask_your_workspace_operator_to_enable_and_configure_cloudflare_workers:
 		"请联系工作空间管理员，启用并配置 Cloudflare Workers AI 或 fal.ai。服务不可用时不会提交生成请求。",
-	the_starting_point: "创作起点",
+	the_starting_point: "创作配方",
 	your_prompt: "提示词",
 	a_quiet_little_house_by_the_sea_warm_morning_light_soft_film_grain:
 		"海边的一座安静小屋，温暖的晨光，柔和的胶片颗粒……",
@@ -617,8 +683,8 @@ export const productChinese = {
 	create_image: "生成图片",
 	credit: "额度",
 	one_image_saved_privately_in_your_library: "一张图片，私密保存于作品库。",
-	your_canvas: "你的画布",
-	ready_when_you_are: "随时等待灵感",
+	your_canvas: "当前作品",
+	ready_when_you_are: "尚未提交",
 	the_outcome_is_not_confirmed: "结果尚未确认。",
 	your_request_may_already_exist_recover_the_exact_same_request_without_:
 		"请求可能已创建。你可以恢复同一个请求，而不会重复生成；也可以先查看作品库。",
@@ -640,6 +706,10 @@ export const productChinese = {
 	cookies: "Cookie 政策",
 	how_it_works: "使用方式",
 	pricing: "套餐价格",
+	unknown_operator:
+		"此请求无法自动查询或恢复。请勿重复提交。请将下方请求 ID 提供给工作区管理员核查。",
+	unknown_reserved_operator: "管理员核实结果前，此请求的额度会继续保留预留。",
+	saved_request: "已保存的请求",
 	free: "免费",
 	pro: "专业版",
 	pro_annual: "专业版年付",

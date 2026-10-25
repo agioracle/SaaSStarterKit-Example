@@ -1,0 +1,582 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-25T02:59:39.690910Z",
+  "title": "Design System: Lumina",
+  "extensions": {
+    "colorMeta": {
+      "bg": {
+        "role": "neutral",
+        "displayName": "Mineral ground",
+        "tonalRamp": [
+          "oklch(15% 0.0020 95.10)",
+          "oklch(27% 0.0037 95.10)",
+          "oklch(39% 0.0053 95.10)",
+          "oklch(51% 0.0054 95.10)",
+          "oklch(63% 0.0054 95.10)",
+          "oklch(75% 0.0054 95.10)",
+          "oklch(87% 0.0028 95.10)",
+          "oklch(95% 0.0011 95.10)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Proof paper",
+        "tonalRamp": [
+          "oklch(15% 0.0015 106.47)",
+          "oklch(27% 0.0027 106.47)",
+          "oklch(39% 0.0039 106.47)",
+          "oklch(51% 0.0040 106.47)",
+          "oklch(63% 0.0040 106.47)",
+          "oklch(75% 0.0040 106.47)",
+          "oklch(87% 0.0021 106.47)",
+          "oklch(95% 0.0008 106.47)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0105 313.40)",
+          "oklch(27% 0.0189 313.40)",
+          "oklch(39% 0.0273 313.40)",
+          "oklch(51% 0.0280 313.40)",
+          "oklch(63% 0.0280 313.40)",
+          "oklch(75% 0.0280 313.40)",
+          "oklch(87% 0.0145 313.40)",
+          "oklch(95% 0.0056 313.40)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted ink",
+        "tonalRamp": [
+          "oklch(15% 0.0084 312.63)",
+          "oklch(27% 0.0152 312.63)",
+          "oklch(39% 0.0219 312.63)",
+          "oklch(51% 0.0225 312.63)",
+          "oklch(63% 0.0225 312.63)",
+          "oklch(75% 0.0225 312.63)",
+          "oklch(87% 0.0117 312.63)",
+          "oklch(95% 0.0045 312.63)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Divider",
+        "tonalRamp": [
+          "oklch(15% 0.0035 314.78)",
+          "oklch(27% 0.0062 314.78)",
+          "oklch(39% 0.0090 314.78)",
+          "oklch(51% 0.0092 314.78)",
+          "oklch(63% 0.0092 314.78)",
+          "oklch(75% 0.0092 314.78)",
+          "oklch(87% 0.0048 314.78)",
+          "oklch(95% 0.0018 314.78)"
+        ]
+      },
+      "soft": {
+        "role": "neutral",
+        "displayName": "Soft bed",
+        "tonalRamp": [
+          "oklch(15% 0.0028 312.30)",
+          "oklch(27% 0.0050 312.30)",
+          "oklch(39% 0.0072 312.30)",
+          "oklch(51% 0.0074 312.30)",
+          "oklch(63% 0.0074 312.30)",
+          "oklch(75% 0.0074 312.30)",
+          "oklch(87% 0.0039 312.30)",
+          "oklch(95% 0.0015 312.30)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Aubergine",
+        "tonalRamp": [
+          "oklch(15% 0.0224 313.57)",
+          "oklch(27% 0.0403 313.57)",
+          "oklch(39% 0.0582 313.57)",
+          "oklch(51% 0.0596 313.57)",
+          "oklch(63% 0.0596 313.57)",
+          "oklch(75% 0.0596 313.57)",
+          "oklch(87% 0.0310 313.57)",
+          "oklch(95% 0.0119 313.57)"
+        ]
+      },
+      "accent-soft": {
+        "role": "primary",
+        "displayName": "Aubergine wash",
+        "tonalRamp": [
+          "oklch(15% 0.0081 316.45)",
+          "oklch(27% 0.0146 316.45)",
+          "oklch(39% 0.0210 316.45)",
+          "oklch(51% 0.0216 316.45)",
+          "oklch(63% 0.0216 316.45)",
+          "oklch(75% 0.0216 316.45)",
+          "oklch(87% 0.0112 316.45)",
+          "oklch(95% 0.0043 316.45)"
+        ]
+      },
+      "danger": {
+        "role": "tertiary",
+        "displayName": "Danger",
+        "tonalRamp": [
+          "oklch(15% 0.0551 17.49)",
+          "oklch(27% 0.0991 17.49)",
+          "oklch(39% 0.1432 17.49)",
+          "oklch(51% 0.1469 17.49)",
+          "oklch(63% 0.1469 17.49)",
+          "oklch(75% 0.1469 17.49)",
+          "oklch(87% 0.0764 17.49)",
+          "oklch(95% 0.0294 17.49)"
+        ]
+      },
+      "control-line": {
+        "role": "neutral",
+        "displayName": "Control edge",
+        "tonalRamp": [
+          "oklch(15% 0.0082 315.61)",
+          "oklch(27% 0.0148 315.61)",
+          "oklch(39% 0.0214 315.61)",
+          "oklch(51% 0.0220 315.61)",
+          "oklch(63% 0.0220 315.61)",
+          "oklch(75% 0.0220 315.61)",
+          "oklch(87% 0.0114 315.61)",
+          "oklch(95% 0.0044 315.61)"
+        ]
+      },
+      "selection": {
+        "role": "secondary",
+        "displayName": "Ochre",
+        "tonalRamp": [
+          "oklch(15% 0.0393 81.50)",
+          "oklch(27% 0.0707 81.50)",
+          "oklch(39% 0.1022 81.50)",
+          "oklch(51% 0.1048 81.50)",
+          "oklch(63% 0.1048 81.50)",
+          "oklch(75% 0.1048 81.50)",
+          "oklch(87% 0.0545 81.50)",
+          "oklch(95% 0.0210 81.50)"
+        ]
+      },
+      "selection-ink": {
+        "role": "secondary",
+        "displayName": "Selection ink",
+        "tonalRamp": [
+          "oklch(15% 0.0124 311.02)",
+          "oklch(27% 0.0224 311.02)",
+          "oklch(39% 0.0323 311.02)",
+          "oklch(51% 0.0331 311.02)",
+          "oklch(63% 0.0331 311.02)",
+          "oklch(75% 0.0331 311.02)",
+          "oklch(87% 0.0172 311.02)",
+          "oklch(95% 0.0066 311.02)"
+        ]
+      },
+      "focus": {
+        "role": "secondary",
+        "displayName": "Focus ochre",
+        "tonalRamp": [
+          "oklch(15% 0.0355 74.02)",
+          "oklch(27% 0.0639 74.02)",
+          "oklch(39% 0.0923 74.02)",
+          "oklch(51% 0.0946 74.02)",
+          "oklch(63% 0.0946 74.02)",
+          "oklch(75% 0.0946 74.02)",
+          "oklch(87% 0.0492 74.02)",
+          "oklch(95% 0.0189 74.02)"
+        ]
+      },
+      "dark-bg": {
+        "role": "neutral",
+        "displayName": "Dark · Mineral ground",
+        "tonalRamp": [
+          "oklch(15% 0.0075 307.55)",
+          "oklch(27% 0.0135 307.55)",
+          "oklch(39% 0.0195 307.55)",
+          "oklch(51% 0.0200 307.55)",
+          "oklch(63% 0.0200 307.55)",
+          "oklch(75% 0.0200 307.55)",
+          "oklch(87% 0.0104 307.55)",
+          "oklch(95% 0.0040 307.55)"
+        ]
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "Dark · Proof paper",
+        "tonalRamp": [
+          "oklch(15% 0.0095 309.13)",
+          "oklch(27% 0.0171 309.13)",
+          "oklch(39% 0.0246 309.13)",
+          "oklch(51% 0.0253 309.13)",
+          "oklch(63% 0.0253 309.13)",
+          "oklch(75% 0.0253 309.13)",
+          "oklch(87% 0.0131 309.13)",
+          "oklch(95% 0.0051 309.13)"
+        ]
+      },
+      "dark-ink": {
+        "role": "neutral",
+        "displayName": "Dark · Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0042 321.32)",
+          "oklch(27% 0.0076 321.32)",
+          "oklch(39% 0.0110 321.32)",
+          "oklch(51% 0.0113 321.32)",
+          "oklch(63% 0.0113 321.32)",
+          "oklch(75% 0.0113 321.32)",
+          "oklch(87% 0.0059 321.32)",
+          "oklch(95% 0.0023 321.32)"
+        ]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "Dark · Muted ink",
+        "tonalRamp": [
+          "oklch(15% 0.0088 314.68)",
+          "oklch(27% 0.0159 314.68)",
+          "oklch(39% 0.0230 314.68)",
+          "oklch(51% 0.0236 314.68)",
+          "oklch(63% 0.0236 314.68)",
+          "oklch(75% 0.0236 314.68)",
+          "oklch(87% 0.0123 314.68)",
+          "oklch(95% 0.0047 314.68)"
+        ]
+      },
+      "dark-line": {
+        "role": "neutral",
+        "displayName": "Dark · Divider",
+        "tonalRamp": [
+          "oklch(15% 0.0109 312.84)",
+          "oklch(27% 0.0197 312.84)",
+          "oklch(39% 0.0284 312.84)",
+          "oklch(51% 0.0291 312.84)",
+          "oklch(63% 0.0291 312.84)",
+          "oklch(75% 0.0291 312.84)",
+          "oklch(87% 0.0152 312.84)",
+          "oklch(95% 0.0058 312.84)"
+        ]
+      },
+      "dark-soft": {
+        "role": "neutral",
+        "displayName": "Dark · Soft bed",
+        "tonalRamp": [
+          "oklch(15% 0.0100 310.58)",
+          "oklch(27% 0.0179 310.58)",
+          "oklch(39% 0.0259 310.58)",
+          "oklch(51% 0.0266 310.58)",
+          "oklch(63% 0.0266 310.58)",
+          "oklch(75% 0.0266 310.58)",
+          "oklch(87% 0.0138 310.58)",
+          "oklch(95% 0.0053 310.58)"
+        ]
+      },
+      "dark-accent": {
+        "role": "primary",
+        "displayName": "Dark · Aubergine",
+        "tonalRamp": [
+          "oklch(15% 0.0202 314.15)",
+          "oklch(27% 0.0363 314.15)",
+          "oklch(39% 0.0524 314.15)",
+          "oklch(51% 0.0538 314.15)",
+          "oklch(63% 0.0538 314.15)",
+          "oklch(75% 0.0538 314.15)",
+          "oklch(87% 0.0280 314.15)",
+          "oklch(95% 0.0108 314.15)"
+        ]
+      },
+      "dark-accent-soft": {
+        "role": "primary",
+        "displayName": "Dark · Aubergine wash",
+        "tonalRamp": [
+          "oklch(15% 0.0170 309.77)",
+          "oklch(27% 0.0305 309.77)",
+          "oklch(39% 0.0441 309.77)",
+          "oklch(51% 0.0452 309.77)",
+          "oklch(63% 0.0452 309.77)",
+          "oklch(75% 0.0452 309.77)",
+          "oklch(87% 0.0235 309.77)",
+          "oklch(95% 0.0090 309.77)"
+        ]
+      },
+      "dark-danger": {
+        "role": "tertiary",
+        "displayName": "Dark · Danger",
+        "tonalRamp": [
+          "oklch(15% 0.0320 14.50)",
+          "oklch(27% 0.0575 14.50)",
+          "oklch(39% 0.0831 14.50)",
+          "oklch(51% 0.0852 14.50)",
+          "oklch(63% 0.0852 14.50)",
+          "oklch(75% 0.0852 14.50)",
+          "oklch(87% 0.0443 14.50)",
+          "oklch(95% 0.0170 14.50)"
+        ]
+      },
+      "dark-control-line": {
+        "role": "neutral",
+        "displayName": "Dark · Control edge",
+        "tonalRamp": [
+          "oklch(15% 0.0166 313.03)",
+          "oklch(27% 0.0298 313.03)",
+          "oklch(39% 0.0431 313.03)",
+          "oklch(51% 0.0442 313.03)",
+          "oklch(63% 0.0442 313.03)",
+          "oklch(75% 0.0442 313.03)",
+          "oklch(87% 0.0230 313.03)",
+          "oklch(95% 0.0088 313.03)"
+        ]
+      },
+      "dark-selection": {
+        "role": "secondary",
+        "displayName": "Dark · Ochre",
+        "tonalRamp": [
+          "oklch(15% 0.0375 80.40)",
+          "oklch(27% 0.0675 80.40)",
+          "oklch(39% 0.0975 80.40)",
+          "oklch(51% 0.1000 80.40)",
+          "oklch(63% 0.1000 80.40)",
+          "oklch(75% 0.1000 80.40)",
+          "oklch(87% 0.0520 80.40)",
+          "oklch(95% 0.0200 80.40)"
+        ]
+      },
+      "dark-selection-ink": {
+        "role": "secondary",
+        "displayName": "Dark · Selection ink",
+        "tonalRamp": [
+          "oklch(15% 0.0102 315.32)",
+          "oklch(27% 0.0184 315.32)",
+          "oklch(39% 0.0266 315.32)",
+          "oklch(51% 0.0273 315.32)",
+          "oklch(63% 0.0273 315.32)",
+          "oklch(75% 0.0273 315.32)",
+          "oklch(87% 0.0142 315.32)",
+          "oklch(95% 0.0055 315.32)"
+        ]
+      },
+      "dark-focus": {
+        "role": "secondary",
+        "displayName": "Dark · Focus ochre",
+        "tonalRamp": [
+          "oklch(15% 0.0353 79.66)",
+          "oklch(27% 0.0635 79.66)",
+          "oklch(39% 0.0917 79.66)",
+          "oklch(51% 0.0940 79.66)",
+          "oklch(63% 0.0940 79.66)",
+          "oklch(75% 0.0940 79.66)",
+          "oklch(87% 0.0489 79.66)",
+          "oklch(95% 0.0188 79.66)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "English public home headline."
+      },
+      "display-zh": {
+        "displayName": "Display Zh",
+        "purpose": "Chinese home headline; locale-specific clamp and leading."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Public explanatory sections."
+      },
+      "page-title": {
+        "displayName": "Page Title",
+        "purpose": "Operating page headings."
+      },
+      "panel-title": {
+        "displayName": "Panel Title",
+        "purpose": "Recipe and inspection title bars."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Detail prompt; body sizes otherwise vary by surface."
+      },
+      "field-label": {
+        "displayName": "Field Label",
+        "purpose": "Studio form labels."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Common action text."
+      }
+    },
+    "shadows": [
+      {
+        "name": "flat-bench",
+        "value": "none",
+        "purpose": "Common proof-bench panels and buttons; tonal surfaces and borders convey depth."
+      }
+    ],
+    "motion": [
+      {
+        "name": "color-response",
+        "value": "160ms ease-out",
+        "purpose": "Button background and text color transitions."
+      },
+      {
+        "name": "button-hover-lift",
+        "value": "translateY(-1px)",
+        "purpose": "Inherited enabled-button hover response, without a panel shadow."
+      },
+      {
+        "name": "pending-loader",
+        "value": "spin 1s linear infinite",
+        "purpose": "Real pending work only; disabled under reduced motion."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "Maximum remaining animation/transition duration with one animation iteration; automatic scrolling."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop",
+        "value": "1180px"
+      },
+      {
+        "name": "navigation-rail",
+        "value": "960px"
+      },
+      {
+        "name": "stack",
+        "value": "760px"
+      },
+      {
+        "name": "narrow-phone",
+        "value": "420px"
+      },
+      {
+        "name": "header-wrap",
+        "value": "360px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Shared primary action with enabled hover, keyboard focus and disabled state.",
+      "html": "<button type=\"button\" class=\"ds-button ds-primary\">Create image</button>",
+      "css": ".ds-button { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:44px; padding:11px 18px; border:1px solid transparent; border-radius:8px; font-family:inherit; font-size:.9rem; font-weight:650; line-height:1.3; text-align:center; box-shadow:none; cursor:pointer; transition:background-color 160ms ease-out,color 160ms ease-out; } .ds-button:hover:not(:disabled) { transform:translateY(-1px); } .ds-button:disabled { cursor:not-allowed; opacity:.5; } .ds-primary { background:var(--accent); color:var(--surface); } .ds-primary:hover { background:var(--ink); color:var(--surface); }.ds-button:focus-visible { outline:3px solid var(--focus); outline-offset:3px; } @media (prefers-reduced-motion:reduce) { .ds-button { transition-duration:.01ms; } }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Shared secondary action with enabled hover, keyboard focus and disabled state.",
+      "html": "<button type=\"button\" class=\"ds-button ds-secondary\">Check status</button>",
+      "css": ".ds-button { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:44px; padding:11px 18px; border:1px solid transparent; border-radius:8px; font-family:inherit; font-size:.9rem; font-weight:650; line-height:1.3; text-align:center; box-shadow:none; cursor:pointer; transition:background-color 160ms ease-out,color 160ms ease-out; } .ds-button:hover:not(:disabled) { transform:translateY(-1px); } .ds-button:disabled { cursor:not-allowed; opacity:.5; } .ds-secondary { background:transparent; color:var(--ink); border-color:var(--control-line); } .ds-secondary:hover { background:var(--soft); }.ds-button:focus-visible { outline:3px solid var(--focus); outline-offset:3px; } @media (prefers-reduced-motion:reduce) { .ds-button { transition-duration:.01ms; } }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Shared ghost action with enabled hover, keyboard focus and disabled state.",
+      "html": "<button type=\"button\" class=\"ds-button ds-ghost\">Cancel</button>",
+      "css": ".ds-button { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:44px; padding:11px 18px; border:1px solid transparent; border-radius:8px; font-family:inherit; font-size:.9rem; font-weight:650; line-height:1.3; text-align:center; box-shadow:none; cursor:pointer; transition:background-color 160ms ease-out,color 160ms ease-out; } .ds-button:hover:not(:disabled) { transform:translateY(-1px); } .ds-button:disabled { cursor:not-allowed; opacity:.5; } .ds-ghost { background:transparent; color:var(--ink); }.ds-button:focus-visible { outline:3px solid var(--focus); outline-offset:3px; } @media (prefers-reduced-motion:reduce) { .ds-button { transition-duration:.01ms; } }"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Shared danger action with enabled hover, keyboard focus and disabled state.",
+      "html": "<button type=\"button\" class=\"ds-button ds-danger\">Delete image</button>",
+      "css": ".ds-button { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:44px; padding:11px 18px; border:1px solid transparent; border-radius:8px; font-family:inherit; font-size:.9rem; font-weight:650; line-height:1.3; text-align:center; box-shadow:none; cursor:pointer; transition:background-color 160ms ease-out,color 160ms ease-out; } .ds-button:hover:not(:disabled) { transform:translateY(-1px); } .ds-button:disabled { cursor:not-allowed; opacity:.5; } .ds-danger { background:var(--danger); color:var(--surface); }.ds-button:focus-visible { outline:3px solid var(--focus); outline-offset:3px; } @media (prefers-reduced-motion:reduce) { .ds-button { transition-duration:.01ms; } }"
+    },
+    {
+      "name": "Prompt Field",
+      "kind": "input",
+      "refersTo": "prompt-field",
+      "description": "The Studio recipe prompt with label, resize, caret and visible focus.",
+      "html": "<label class=\"ds-field\">Describe your image<textarea class=\"ds-prompt\" placeholder=\"Describe a composition\"></textarea></label>",
+      "css": ".ds-field { display:flex; flex-direction:column; gap:9px; color:var(--ink); font-family:inherit; font-size:.86rem; font-weight:600; } .ds-prompt { min-height:132px; padding:12px; border:1px solid var(--control-line); border-radius:8px; background:var(--surface); color:var(--ink); font:inherit; font-size:.94rem; line-height:1.6; resize:vertical; caret-color:var(--accent); } .ds-prompt::placeholder { color:var(--muted); opacity:1; } .ds-prompt:focus { border-color:var(--accent); } .ds-prompt:focus-visible { outline:3px solid var(--focus); outline-offset:3px; }"
+    },
+    {
+      "name": "Workspace Navigation",
+      "kind": "nav",
+      "refersTo": "navigation-link",
+      "description": "Operating navigation with active page, hover and keyboard focus.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Workspace\"><a class=\"ds-nav-link ds-active\" href=\"#studio\" aria-current=\"page\">Studio</a><a class=\"ds-nav-link\" href=\"#library\">Library</a></nav>",
+      "css": ".ds-nav { display:flex; flex-direction:column; gap:5px; } .ds-nav-link { display:flex; align-items:center; gap:10px; padding:12px; min-height:44px; border-radius:8px; font-family:inherit; font-size:.875rem; color:var(--muted); text-decoration:none; } .ds-nav-link:hover { background:var(--soft); color:var(--ink); } .ds-nav-link.ds-active { background:var(--accent-soft); color:var(--ink); font-weight:650; } .ds-nav-link:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }"
+    },
+    {
+      "name": "Selected Recipe Chip",
+      "kind": "chip",
+      "refersTo": "style-chip-selected",
+      "description": "A recipe choice; selected state is expressed by fill, border and aria-pressed.",
+      "html": "<button type=\"button\" class=\"ds-chip\" aria-pressed=\"true\">As written</button>",
+      "css": ".ds-chip { min-height:40px; padding:8px 10px; border:1px solid var(--control-line); background:var(--surface); color:var(--ink); border-radius:6px; font-family:inherit; font-size:.76rem; cursor:pointer; } .ds-chip[aria-pressed=\"true\"] { background:var(--selection); border-color:var(--selection-ink); color:var(--selection-ink); } .ds-chip:focus-visible { outline:3px solid var(--focus); outline-offset:3px; }"
+    },
+    {
+      "name": "Paper Panel",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "A flat task container with a divided title bar and inset body.",
+      "html": "<section class=\"ds-card\"><div class=\"ds-panel-title\"><h2>Recipe</h2></div><div class=\"ds-card-body\">One deliberate image request.</div></section>",
+      "css": ".ds-card { background:var(--surface); color:var(--ink); border:1px solid var(--line); border-radius:12px; box-shadow:none; overflow:hidden; font-family:inherit; } .ds-panel-title { display:flex; align-items:center; gap:9px; padding:18px 20px; min-height:58px; border-bottom:1px solid var(--line); } .ds-panel-title h2 { font-size:1rem; font-weight:650; line-height:1.2; letter-spacing:0; margin:0; } .ds-card-body { padding:20px; }"
+    },
+    {
+      "name": "Proof Canvas",
+      "kind": "custom",
+      "refersTo": "proof-canvas",
+      "description": "The focusable result region; source focuses it after submission and scrolls to it on phones.",
+      "html": "<section class=\"ds-canvas\" tabindex=\"-1\" aria-label=\"Result\"><div class=\"ds-canvas-title\">Your proof</div><div class=\"ds-canvas-empty\"><h3>Ready for your first image</h3><p>Your image and its real status appear here.</p></div></section>",
+      "css": ".ds-canvas { border-radius:12px; background:var(--soft); color:var(--ink); border:1px solid var(--line); font-family:inherit; scroll-margin-top:24px; } .ds-canvas:focus-visible { outline:3px solid var(--focus); outline-offset:5px; } .ds-canvas-title { padding:18px 20px; min-height:58px; border-bottom:1px solid var(--line); font-size:1rem; font-weight:650; } .ds-canvas-empty { min-height:440px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:44px; gap:14px; } .ds-canvas-empty h3 { font-size:1.35rem; margin:0; letter-spacing:-.025em; } .ds-canvas-empty p { max-width:43ch; font-size:.9rem; line-height:1.7; color:var(--muted); margin:0; } @media(max-width:760px) { .ds-canvas-empty { min-height:290px; padding:28px; } }"
+    },
+    {
+      "name": "Allowance Strip",
+      "kind": "custom",
+      "refersTo": "allowance",
+      "description": "A static component preview with explicitly illustrative values; progress measures used or reserved allowance.",
+      "html": "<div class=\"ds-usage\" aria-label=\"Illustrative allowance preview\"><div><span>Monthly image allowance · example</span><strong>8 <small>/ 10</small></strong></div><progress value=\"2\" max=\"10\" aria-label=\"Example allowance used or reserved\"></progress><p>1 used · 1 reserved <span>UTC month</span></p></div>",
+      "css": ".ds-usage { background:var(--surface); color:var(--ink); border:1px solid var(--line); padding:16px 20px; border-radius:8px; font-family:inherit; font-variant-numeric:tabular-nums; } .ds-usage > div { display:flex; gap:20px; align-items:center; justify-content:space-between; font-size:.85rem; } .ds-usage strong { font-size:1.1rem; } .ds-usage strong small { font-size:.8rem; color:var(--muted); font-weight:400; } .ds-usage progress { width:100%; height:4px; border:0; display:block; margin:12px 0; background:var(--line); accent-color:var(--accent); } .ds-usage progress::-webkit-progress-bar { background:var(--line); border-radius:2px; } .ds-usage progress::-webkit-progress-value { background:var(--accent); border-radius:2px; } .ds-usage p { display:flex; justify-content:space-between; gap:12px; margin:0; color:var(--muted); font-size:.75rem; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "印样工作台 — Printmaker proof bench",
+    "overview": "Lumina is a modern, simple and warm proof bench for private image creation. Mineral grey grounds, aubergine ink and a small amount of ochre make the recipe, the image and the real task state the focus. One humanist sans family serves both public pages and the working application; Chinese uses the platform fallback in the same stack.\n\nOperate surfaces keep the Studio, library, detail and account tasks compact and readable. Home and pricing use more open space and larger type to persuade through an honest demonstration. The visual system is flat: thin dividers and changes in surface tone organize work. The reusable signature is a recipe beside an inspection canvas, with submission moving focus to the actual result or status region.\n\nThe initial finish verdict covers three scored fixes and 15 recaptured views, and the separate shared-field focus verdict covers one additional fix and eight valid captures; both ship dispositions apply only to those scored fixes and do not certify every surface or live service behavior.",
+    "keyCharacteristics": [
+      "Task first: recipe, proof and lifecycle remain legible.",
+      "Flat mineral surfaces with aubergine actions and ochre selection.",
+      "One self-hosted humanist sans family, with EN/ZH and two themes.",
+      "Original geometric vector studies are explicitly distinguished from model output."
+    ],
+    "rules": [
+      {
+        "name": "The State Has Meaning Rule",
+        "body": "Aubergine identifies actions and completed states; ochre identifies chosen controls. Error and unknown states use the danger role with explanatory text, never color alone.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Use Hanken Grotesk for headings, body and controls. Preserve the Chinese fallback stack and the bundled font license; reserve monospace for actual code and request identifiers.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Bench Rule",
+        "body": "Panels rest on tonal surfaces and thin borders without shadows. The inherited one-pixel button hover lift is an interaction detail, not an elevation scale.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the recipe, result and real status connected, with visible labels and recovery instructions.",
+      "Do use the light and dark semantic roles together; preserve selection, caret, scrollbar and keyboard focus treatments.",
+      "Do use native fieldsets, selects and disclosure controls, with explicit labels and selected states.",
+      "Do preserve one deliberate request, the same recovery key and any unknown reservation; status checks follow the existing capability gate.",
+      "Do keep image demonstrations truthful: label original vector studies and retain provenance on inherited raster assets.",
+      "Do preserve EN/ZH copy, responsive navigation, reduced motion and the self-hosted font notices."
+    ],
+    "donts": [
+      "Don't add kickers or eyebrows above headings, ornate marketing decoration or invented usage counters.",
+      "Don't present vector studies as AI results or use CSS scenes as substitute generated artwork.",
+      "Don't show fabricated progress percentages, imply a background application queue or offer a paid retry as recovery.",
+      "Don't infer authorization from hidden navigation, or change provider, quota, private asset, auth or payment behavior through a visual extension.",
+      "Don't propagate unused eyebrow rules or glyph-based placeholder icons into new proof-bench surfaces."
+    ]
+  }
+}

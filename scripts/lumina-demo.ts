@@ -1,3 +1,4 @@
+import { fixtureOrigin } from "../tests/e2e/environment";
 import { spawnSync } from "node:child_process";
 import { mkdtempSync } from "node:fs";
 import { join } from "node:path";
@@ -26,7 +27,7 @@ run([
 	"import('./tests/e2e/setup.ts').then(m => m.default())",
 ]);
 console.log(
-	"LOCAL FIXTURE ONLY: http://127.0.0.1:4173 | e2e.member@example.invalid | E2eFixturePassword!23",
+	`LOCAL FIXTURE ONLY: ${fixtureOrigin} | e2e.member@example.invalid | E2eFixturePassword!23`,
 );
 console.log(
 	"No real AI, payments or mail. Stop with Ctrl-C. Never deploy the generated checkout.",

@@ -1,15 +1,17 @@
-import { mkdirSync } from "node:fs";
+import { fixtureOrigin } from "./environment";
+import { readFileSync, mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { test, expect, type Page } from "@playwright/test";
 import { signInFixture } from "./browser-session";
 
-const origin = "http://127.0.0.1:4173";
+const origin = fixtureOrigin;
 test.use({ actionTimeout: 10_000 });
 async function evidence(page: Page, name: string) {
 	const path = process.env.EDGEKIT_QA_EVIDENCE;
 	if (!path) return;
 	mkdirSync(path, { recursive: true });
-	await page.screenshot({ path: resolve(path, `${name}.png`), fullPage: true });
+	await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: "instant" }));
+ await page.screenshot({ path: resolve(path, `${name}.png`), fullPage: true });
 }
 test.beforeEach(async ({ page }) => {
 	const errors: string[] = [];
@@ -58,6 +60,30 @@ for (const width of [1440, 390]) {
 			timeout: 20_000,
 		});
 		expect(posts).toBe(1);
+		await expect(page.locator("#studio-result")).toBeFocused();
+		const zoom = page.getByRole("button", {
+			name: "Enlarge image",
+			exact: true,
+		});
+		await zoom.focus();
+		await page.keyboard.press("Enter");
+		await expect(
+			page.getByRole("button", { name: "Fit image", exact: true }),
+		).toHaveAttribute("aria-pressed", "true");
+		await page.keyboard.press("Enter");
+		await expect(zoom).toHaveAttribute("aria-pressed", "false");
+		if (width === 390) {
+			const header = await page.locator(".header-inner").boundingBox();
+			const rail = await page.locator(".sidebar").boundingBox();
+			if (!rail || !header)
+				throw Error("Header or navigation rail is not laid out");
+			expect(rail.y).toBeGreaterThanOrEqual(header.y + header.height);
+			expect(
+				await page
+					.locator(".site-header .brand-title")
+					.evaluate((el) => el.scrollWidth <= el.clientWidth + 1),
+			).toBe(true);
+		}
 		await evidence(page, `lumina-studio-${width}`);
 		const imageUrl = await page
 			.locator(".lm-result-image img")
@@ -184,7 +210,25 @@ test("@lumina failures and unknown outcomes retain honest state, ownership and c
 	await expect(
 		page.getByRole("button", { name: "Delete this creation", exact: true }),
 	).toHaveCount(0);
+	await expect(
+		page.getByRole("link", { name: "Reuse prompt", exact: true }),
+	).toHaveCount(0);
+	await expect(page.locator("main")).toContainText(
+		"Automatic status recovery is unavailable",
+	);
+	await expect(
+		page.getByRole("button", { name: "Check status", exact: true }),
+	).toHaveCount(0);
 	await evidence(page, "lumina-unknown");
+	await page.goto(`/zh/library/${unknown.body.job.id}`);
+	await expect(page.locator("main")).toContainText("此请求无法自动查询或恢复");
+	await evidence(page, "lumina-unknown-zh");
+	await page.goto(`/library/${pending.body.job.id}`);
+	await expect(page.locator(".lm-job-pending")).toBeVisible();
+	await evidence(page, "lumina-pending");
+	await page.goto(`/library/${failed.body.job.id}`);
+	await expect(page.locator(".lm-status-failed")).toBeVisible();
+	await evidence(page, "lumina-failed");
 	await page.goto("/admin/generations");
 	await expect(page.locator("main")).toContainText(unknown.body.job.id);
 	await evidence(page, "lumina-admin");
@@ -218,5 +262,202 @@ test("@lumina Chinese mobile Studio and private library are translated and named
 			),
 		).toBe(true);
 		await evidence(page, `lumina-zh-${path.split("/").pop()}`);
+	}
+});
+
+test("@lumina proof bench keyboard, allowance, auth return path and accessible themes", async ({
+	page,
+}) => {
+	test.setTimeout(180_000);
+	await page.goto("/studio?idea=1");
+	await expect(page).toHaveURL(/auth\/login/);
+	await page.locator(".auth-switch a").click();
+	await expect(page).toHaveURL(/auth\/register.*redirect/);
+	expect(new URL(page.url()).searchParams.get("redirect")).toBe(
+		"/studio?idea=1",
+	);
+	await page.locator(".auth-switch a").click();
+	expect(new URL(page.url()).searchParams.get("redirect")).toBe(
+		"/studio?idea=1",
+	);
+	await signInFixture(page, "cursor");
+	await page.goto("/studio");
+	await page.locator("#image-prompt").fill("Keyboard fixture, private proof");
+	await page.locator("#image-prompt").press("Control+Enter");
+	await expect(page.locator(".lm-result-image img")).toBeVisible({
+		timeout: 20_000,
+	});
+	await expect(page.locator("#studio-result")).toBeFocused();
+	await page.goto("/settings/profile");
+	await expect(
+		page.getByRole("heading", {
+			name: "Your workspace allowance",
+			exact: true,
+		}),
+	).toBeVisible();
+	const usage = await (
+		await page.request.get("/api/generations/config")
+	).json();
+	await expect(
+		page.locator(".lm-account-allowance .lm-usage strong"),
+	).toContainText(String(usage.usage.remaining));
+	const axePath = process.env.EDGEKIT_QA_AXE_PATH;
+	for (const profile of [
+		{ width: 1440, theme: "light" },
+		{ width: 1440, theme: "dark" },
+		{ width: 390, theme: "light" },
+		{ width: 390, theme: "dark" },
+	]) {
+		await page.setViewportSize({
+			width: profile.width,
+			height: profile.width === 390 ? 844 : 1000,
+		});
+		await page.emulateMedia({ reducedMotion: "reduce" });
+		await page.evaluate(
+			(theme) => localStorage.setItem("edgekit-theme", theme),
+			profile.theme,
+		);
+		for (const path of [
+			"/studio",
+			"/library",
+			"/settings/profile",
+			"/zh/studio",
+		]) {
+			await page.goto(path);
+			await expect(page.locator("html")).toHaveAttribute(
+				"data-theme",
+				profile.theme,
+			);
+			const transitions = await page
+				.locator("main .button")
+				.evaluateAll((nodes) =>
+					nodes.map((node) => getComputedStyle(node).transitionDuration),
+				);
+			expect(
+				transitions.every((value) =>
+					value.split(",").every((part) => parseFloat(part) <= 0.01),
+				),
+			).toBe(true);
+			expect(
+				await page.evaluate(
+					() => document.documentElement.scrollWidth <= innerWidth + 1,
+				),
+			).toBe(true);
+			if (axePath) {
+				await page.evaluate(readFileSync(axePath, "utf8"));
+				const violations = await page.evaluate(
+					async () =>
+						(
+							await (
+								window as unknown as {
+									axe: {
+										run: (
+											options: unknown,
+										) => Promise<{ violations: unknown[] }>;
+									};
+								}
+							).axe.run({
+								runOnly: {
+									type: "tag",
+									values: [
+										"wcag2a",
+										"wcag2aa",
+										"wcag21a",
+										"wcag21aa",
+										"wcag22aa",
+									],
+								},
+							})
+						).violations,
+				);
+				expect(violations, `${profile.theme}/${profile.width}${path}`).toEqual(
+					[],
+				);
+			}
+			if (path === "/studio" || path === "/library")
+				await evidence(
+					page,
+					`proof-${profile.theme}-${profile.width}-${path.slice(1)}`,
+				);
+		}
+	}
+});
+
+test("@lumina shared fields preserve keyboard focus tokens in both themes", async ({
+	page,
+}) => {
+	test.setTimeout(120_000);
+	await signInFixture(page, "cursor");
+	for (const profile of [
+		{ width: 1440, theme: "light" },
+		{ width: 1440, theme: "dark" },
+		{ width: 390, theme: "light" },
+		{ width: 390, theme: "dark" },
+	]) {
+		await page.setViewportSize({
+			width: profile.width,
+			height: profile.width === 390 ? 844 : 1000,
+		});
+		await page.goto("/");
+		await page.evaluate(
+			(theme) => localStorage.setItem("edgekit-theme", theme),
+			profile.theme,
+		);
+		for (const [path, selector, label] of [
+			["/auth/register", ".field input", "auth"],
+			["/settings/profile", ".field input:not([disabled])", "account"],
+			["/contact", ".field textarea", "textarea"],
+ ["/settings/apikeys", ".field select", "select"],
+		]) {
+			await page.goto(path);
+ if(label === "select") await page.getByRole("button",{name:"Create API key",exact:true}).click();
+			const field = page.locator(selector).first();
+			// Enter the actual focus traversal with Tab, without element.focus().
+			for (
+				let step = 0;
+				step < 45 &&
+				!(await field.evaluate((el) => el === document.activeElement));
+				step++
+			)
+				await page.keyboard.press("Tab");
+			await expect(field).toBeFocused();
+			const style = await field.evaluate((el) => {
+				const css = getComputedStyle(el);
+				const root = getComputedStyle(document.documentElement);
+				const color = (token: string) => {
+					const probe = document.createElement("span");
+					probe.style.color = root.getPropertyValue(token);
+					document.body.appendChild(probe);
+					const result = getComputedStyle(probe).color;
+					probe.remove();
+					return result;
+				};
+				return {
+					outline: css.outlineColor,
+					border: css.borderColor,
+					width: css.outlineWidth,
+					offset: css.outlineOffset,
+					style: css.outlineStyle,
+					focus: color("--focus"),
+					accent: color("--accent"),
+					visible: el.matches(":focus-visible"),
+				};
+			});
+			expect(style).toEqual({
+				outline: style.focus,
+				border: style.accent,
+				width: "3px",
+				offset: "3px",
+				style: "solid",
+				focus: style.focus,
+				accent: style.accent,
+				visible: true,
+			});
+			if (["auth", "account"].includes(label))
+				await evidence(
+					page,
+					`focus-${label}-${profile.theme}-${profile.width}`,
+				);
+		}
 	}
 });

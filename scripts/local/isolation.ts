@@ -103,6 +103,7 @@ export function localSmokeEnvironment(
 		CI: "true",
 		CLOUDFLARE_SEND_METRICS: "false",
 		WRANGLER_LOG_PATH: join(target, "wrangler.log"),
-		VITE_BASE_URL: "http://127.0.0.1:4173",
+		VITE_BASE_URL: `http://127.0.0.1:${source.E2E_PORT || "4173"}`,
+ ...(source.E2E_PORT ? { E2E_PORT: source.E2E_PORT } : {}),
 	};
 }

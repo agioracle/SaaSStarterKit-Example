@@ -41,6 +41,7 @@ for (const locale of ['en', 'zh'] as const) {
           return visible && !(el.getAttribute('aria-label') || el.getAttribute('aria-labelledby') || el.textContent?.trim() || el.labels?.length);
         }).map(node => node.outerHTML.slice(0, 200)));
         expect(unnamed, localized).toEqual([]);
+        if (width === 390) expect(await page.locator('.site-header .brand-title').evaluate(el => el.scrollWidth <= el.clientWidth + 1), localized).toBe(true);
         if (['/', '/pricing', '/blog', '/ai', '/auth/register'].includes(path)) await screenshot(page, `${locale}-${width}-${path.replaceAll('/', '') || 'home'}`);
       }
     });

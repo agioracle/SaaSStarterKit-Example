@@ -1,7 +1,8 @@
+import { fixtureOrigin } from "./environment";
 import { test, expect, type APIRequestContext } from "@playwright/test";
 async function login(request: APIRequestContext, role: string) {
 	const response = await request.post("/api/auth/sign-in/email", {
-		headers: { origin: "http://127.0.0.1:4173" },
+		headers: { origin: fixtureOrigin },
 		data: {
 			email: `e2e.${role}@example.invalid`,
 			password: "E2eFixturePassword!23",
@@ -23,7 +24,7 @@ test("@browser HTTP fixture login and protected profile-render smoke (not form i
 });
 test("@http API keys reveal once, verify and revoke", async ({ request }) => {
 	await login(request, "member");
-	const headers = { origin: "http://127.0.0.1:4173" };
+	const headers = { origin: fixtureOrigin };
 	const created = await request.post("/api/auth/api-key/create", {
 		headers,
 		data: { name: "E2E integration" },
@@ -58,7 +59,7 @@ test("@http R2 uploads enforce owner on download and deletion", async ({
 		"base64",
 	);
 	const uploaded = await request.post("/api/files", {
-		headers: { origin: "http://127.0.0.1:4173" },
+		headers: { origin: fixtureOrigin },
 		multipart: {
 			file: { name: "avatar.png", mimeType: "image/png", buffer: bytes },
 		},
@@ -67,14 +68,14 @@ test("@http R2 uploads enforce owner on download and deletion", async ({
 	const file = await uploaded.json();
 	expect((await request.get(file.url)).status()).toBe(200);
 	const other = await playwright.request.newContext({
-		baseURL: "http://127.0.0.1:4173",
+		baseURL: fixtureOrigin,
 	});
 	await login(other, "other");
 	expect((await other.get(file.url)).status()).toBe(404);
 	expect(
 		(
 			await other.delete("/api/files", {
-				headers: { origin: "http://127.0.0.1:4173" },
+				headers: { origin: fixtureOrigin },
 				data: { id: file.id },
 			})
 		).status(),
@@ -83,7 +84,7 @@ test("@http R2 uploads enforce owner on download and deletion", async ({
 	expect(
 		(
 			await request.delete("/api/files", {
-				headers: { origin: "http://127.0.0.1:4173" },
+				headers: { origin: fixtureOrigin },
 				data: { id: file.id },
 			})
 		).ok(),
@@ -96,11 +97,11 @@ test("@http admin gate and ban revoke member access immediately", async ({
 }) => {
 	await login(request, "admin");
 	const member = await playwright.request.newContext({
-		baseURL: "http://127.0.0.1:4173",
+		baseURL: fixtureOrigin,
 	});
 	await login(member, "other");
 	expect((await member.get("/api/auth/admin/list-users")).status()).toBe(403);
-	const headers = { origin: "http://127.0.0.1:4173" };
+	const headers = { origin: fixtureOrigin };
 	const ban = await request.post("/api/auth/admin/ban-user", {
 		headers,
 		data: { userId: "e2e-other", banReason: "E2E only", banExpiresIn: 60 },
@@ -136,7 +137,7 @@ test("@http configurable R2 folder metadata and cursor errors are bounded", asyn
 		"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jZL0AAAAASUVORK5CYII=",
 		"base64",
 	);
-	const headers = { origin: "http://127.0.0.1:4173" };
+	const headers = { origin: fixtureOrigin };
 	const invalid = await request.post("/api/files", {
 		headers,
 		multipart: {
@@ -177,7 +178,7 @@ test("@http R2 keyset cursors visit owned files without duplicates", async ({
 	request,
 }) => {
 	await login(request, "cursor");
-	const headers = { origin: "http://127.0.0.1:4173" };
+	const headers = { origin: fixtureOrigin };
 	const bytes = Buffer.from(
 		"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jZL0AAAAASUVORK5CYII=",
 		"base64",
@@ -222,7 +223,7 @@ test("@http arbitrary extension upload remains a private opaque attachment", asy
 	request,
 }) => {
 	await login(request, "member");
-	const headers = { origin: "http://127.0.0.1:4173" };
+	const headers = { origin: fixtureOrigin };
 	const created = await request.post("/api/files", {
 		headers,
 		multipart: {

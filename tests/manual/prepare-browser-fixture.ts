@@ -1,3 +1,4 @@
+import { fixtureOrigin } from "../e2e/environment";
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -40,7 +41,7 @@ if (!original.includes('fetch(request: Request) {')) throw Error('Review worker 
 const capturedWorker = original.replace('fetch(request: Request) {', 'async fetch(request: Request, env: Bindings) {\n    const captured = await capturedMail(request, env);\n    if (captured) return captured;');
 writeFileSync(worker, `import { capturedMail } from './browser-capture-fixture.server';\n${capturedWorker}`);
 writeFileSync(join(target, 'BROWSER-FIXTURE-ONLY.txt'), 'LOCAL TEST ONLY. Captures authentication mail in local KV. Never deploy or package this directory. Production source is untouched.\n');
-writeFileSync('browser-fixture.json', JSON.stringify({ target, origin: 'http://127.0.0.1:4173' }, null, 2));
+writeFileSync('browser-fixture.json', JSON.stringify({ target, origin: fixtureOrigin }, null, 2));
 const built = spawnSync(process.execPath, [join(target, 'node_modules/vite/bin/vite.js'), 'build'], {
   cwd: target, env: localSmokeEnvironment(target), stdio: 'inherit', shell: false,
 });

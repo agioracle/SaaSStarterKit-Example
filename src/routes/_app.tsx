@@ -1,4 +1,4 @@
-import { authRouteMiddleware } from '../middlewares/auth-middleware';
+import { authRouteMiddleware } from "../middlewares/auth-middleware";
 import {
 	createFileRoute,
 	Outlet,
@@ -30,7 +30,9 @@ export const Route = createFileRoute("/_app")({
 });
 function Workspace() {
 	const { session } = Route.useRouteContext();
-	const pathname = useRouterState({ select: (state) => state.location.pathname });
+	const pathname = useRouterState({
+		select: (state) => state.location.pathname,
+	});
 	return (
 		<div className="workspace">
 			<aside className="sidebar">
@@ -50,7 +52,7 @@ function Workspace() {
 				/>
 				<div className="sidebar-bottom">
 					<a className="sidebar-studio" href={localePath("/studio")}>
-						<span>✧ {m.nav_ai()}</span>
+						<span>{m.lumina_nav_studio()}</span>
 						<ArrowUpRight size={16} />
 					</a>
 					<div className="sidebar-user">

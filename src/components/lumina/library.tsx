@@ -140,7 +140,6 @@ export function LibraryPage() {
 		<div className="lm-library-page">
 			<div className="lm-page-heading">
 				<div>
-					<span className="lm-kicker">{l("the_things_you_make")}</span>
 					<h1>{l("your_collection_of_possibilities")}</h1>
 					<p>
 						{l(
@@ -236,7 +235,7 @@ export function LibraryPage() {
 					<span className="lm-empty-frame">
 						<ImagePlus size={38} strokeWidth={1} />
 					</span>
-					<span className="lm-kicker">{l("an_open_invitation_2")}</span>
+
 					<h2>
 						{l("your_first_image_is_waiting")}
 						<br />
@@ -378,7 +377,6 @@ export function GenerationDetailPage({ id }: { id: string }) {
 				<>
 					<div className="lm-page-heading">
 						<div>
-							<span className="lm-kicker">{l("from_your_imagination")}</span>
 							<h1>{l("a_closer_look")}</h1>
 							<p>
 								<time dateTime={new Date(job.createdAt).toISOString()}>
@@ -393,7 +391,9 @@ export function GenerationDetailPage({ id }: { id: string }) {
 							<GenerationVisual key={job.id} job={job} />
 							<div className="lm-preview-caption">
 								<span>
-									{l("original_output")}
+									{job.status === "succeeded"
+										? l("original_output")
+										: l("saved_request")}
 									{job.width && job.height
 										? ` · ${job.width} × ${job.height}`
 										: ""}
@@ -458,7 +458,9 @@ export function GenerationDetailPage({ id }: { id: string }) {
 							</dl>
 							{job.error && (
 								<Notice kind={job.status === "failed" ? "error" : "info"}>
-									{productError(job.error)}
+									{job.status === "unknown" && !job.canRefresh
+										? l("unknown_operator")
+										: productError(job.error)}
 								</Notice>
 							)}
 							{query.pollError && (
@@ -468,6 +470,7 @@ export function GenerationDetailPage({ id }: { id: string }) {
 								</Notice>
 							)}
 							<JobActions
+								showDetails={false}
 								job={job}
 								refresh={() => void query.refresh()}
 								refreshing={query.refreshing}
@@ -475,7 +478,9 @@ export function GenerationDetailPage({ id }: { id: string }) {
 							{job.status === "unknown" && (
 								<p className="lm-field-hint">
 									{l(
-										"a_credit_remains_reserved_while_the_result_is_uncertain_if_status_chec",
+										job.canRefresh
+											? "a_credit_remains_reserved_while_the_result_is_uncertain_if_status_chec"
+											: "unknown_reserved_operator",
 									)}
 								</p>
 							)}

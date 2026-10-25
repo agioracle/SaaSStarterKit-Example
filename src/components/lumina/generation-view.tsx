@@ -4,6 +4,8 @@ import {
 	Check,
 	Download,
 	ImagePlus,
+	Maximize2,
+	Minimize2,
 	LoaderCircle,
 	RefreshCw,
 	ShieldCheck,
@@ -16,7 +18,7 @@ import type {
 } from "../../generation/types";
 import { localePath } from "../../locale";
 import { l } from "./copy";
-import { AbstractArt } from "./art";
+
 export function statusLabel(status: GenerationStatus) {
 	const labels: Record<GenerationStatus, string> = {
 		dispatching: l("submitting"),
@@ -32,7 +34,11 @@ export function statusLabel(status: GenerationStatus) {
 }
 export function JobStatus({ job }: { job: GenerationJob }) {
 	return (
-		<span className={`lm-status lm-status-${job.status}`}>
+		<span
+			className={`lm-status lm-status-${job.status}`}
+			role="status"
+			aria-live="polite"
+		>
 			<span />
 			{statusLabel(job.status)}
 		</span>
@@ -63,13 +69,16 @@ export function UsageMeter({
 				{usage.used} {l("used")} · {usage.reserved} {l("reserved")}
 				<span>{usage.period} UTC</span>
 			</p>
-			{!compact && <small>{l("daily_safety")}</small>}
 			{!compact && (
-				<small>
-					{l(
-						"example_workspace_policy_one_image_per_request_confirmed_uncharged_fai",
-					)}
-				</small>
+				<details>
+					<summary>{l("how_allowance_works")}</summary>
+					<p>{l("daily_safety")}</p>
+					<p>
+						{l(
+							"example_workspace_policy_one_image_per_request_confirmed_uncharged_fai",
+						)}
+					</p>
+				</details>
 			)}
 		</div>
 	);
@@ -82,9 +91,23 @@ export function GenerationVisual({
 	compact?: boolean;
 }) {
 	const [broken, setBroken] = useState(false);
+	const [zoomed, setZoomed] = useState(false);
 	if (job?.status === "succeeded" && job.assetUrl && !broken)
 		return (
-			<div className={`lm-result-image ${compact ? "lm-result-compact" : ""}`}>
+			<div
+				className={`lm-result-image ${compact ? "lm-result-compact" : ""} ${zoomed ? "zoomed" : ""}`}
+			>
+				{!compact && (
+					<button
+						className="lm-inspect-button"
+						type="button"
+						aria-pressed={zoomed}
+						onClick={() => setZoomed(!zoomed)}
+					>
+						{zoomed ? <Minimize2 size={16} /> : <Maximize2 size={16} />}{" "}
+						{zoomed ? l("fit_image") : l("inspect_image")}
+					</button>
+				)}
 				<img
 					src={job.assetUrl}
 					alt={job.prompt}
@@ -96,7 +119,6 @@ export function GenerationVisual({
 	if (!job)
 		return (
 			<div className="lm-preview-empty">
-				<AbstractArt variant="orbit" />
 				<span className="lm-preview-empty-icon">
 					<ImagePlus size={26} strokeWidth={1.5} />
 				</span>
@@ -106,7 +128,6 @@ export function GenerationVisual({
 						"your_image_will_appear_here_start_with_a_few_words_and_see_where_they_",
 					)}
 				</p>
-				<small>{l("decorative_illustration_not_a_generated_result")}</small>
 			</div>
 		);
 	const pending = ["dispatching", "queued", "processing"].includes(job.status);
@@ -116,12 +137,8 @@ export function GenerationVisual({
 			role="status"
 		>
 			{pending ? (
-				<span className="lm-loading-orbit">
-					<LoaderCircle
-						size={compact ? 24 : 42}
-						className="spin"
-						strokeWidth={1}
-					/>
+				<span className="lm-loading-orbit" aria-hidden="true">
+					<LoaderCircle size={compact ? 24 : 42} strokeWidth={1} />
 				</span>
 			) : broken ? (
 				<ImagePlus size={30} strokeWidth={1.5} />
@@ -133,6 +150,7 @@ export function GenerationVisual({
 			<h3>
 				{broken ? l("image_could_not_be_loaded") : statusLabel(job.status)}
 			</h3>
+			{pending && !compact && <p>{l("pending_hint")}</p>}
 			{!compact && (
 				<p>
 					{broken
@@ -145,7 +163,9 @@ export function GenerationVisual({
 								)
 							: job.status === "unknown"
 								? l(
-										"we_can_t_confirm_the_outcome_yet_do_not_submit_a_new_request_just_to_r",
+										job.canRefresh
+											? "we_can_t_confirm_the_outcome_yet_do_not_submit_a_new_request_just_to_r"
+											: "unknown_operator",
 									)
 								: l(
 										"no_image_was_completed_review_the_details_below_before_starting_a_new_",
@@ -159,10 +179,12 @@ export function JobActions({
 	job,
 	refresh,
 	refreshing,
+	showDetails = true,
 }: {
 	job: GenerationJob;
 	refresh?: () => void;
 	refreshing?: boolean;
+	showDetails?: boolean;
 }) {
 	return (
 		<div className="lm-job-actions">
@@ -183,17 +205,21 @@ export function JobActions({
 					{l("check_status")}
 				</button>
 			)}
-			<a
-				href={`${localePath("/studio")}?reuse=${encodeURIComponent(job.id)}`}
-				className="button secondary"
-			>
-				<RefreshCw size={15} />
-				{l("reuse_prompt")}
-			</a>
-			<a href={localePath(`/library/${job.id}`)} className="lm-text-link">
-				{l("view_details")}
-				<ArrowUpRight size={15} />
-			</a>
+			{["succeeded", "failed"].includes(job.status) && (
+				<a
+					href={`${localePath("/studio")}?reuse=${encodeURIComponent(job.id)}`}
+					className="button secondary"
+				>
+					<RefreshCw size={15} />
+					{l("reuse_prompt")}
+				</a>
+			)}
+			{showDetails && (
+				<a href={localePath(`/library/${job.id}`)} className="lm-text-link">
+					{l("view_details")}
+					<ArrowUpRight size={15} />
+				</a>
+			)}
 		</div>
 	);
 }

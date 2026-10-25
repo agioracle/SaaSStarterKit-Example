@@ -16,7 +16,6 @@ export function LuminaPricing() {
 	return (
 		<div className="container lm-pricing-page">
 			<div className="lm-pricing-heading">
-				<span className="lm-kicker">{l("a_little_more_room_to_create")}</span>
 				<h1>
 					{l("make_space_for")}
 					<br />
@@ -30,6 +29,7 @@ export function LuminaPricing() {
 				<div className="segmented">
 					<button
 						type="button"
+						aria-pressed={!annual}
 						className={!annual ? "active" : ""}
 						onClick={() => setAnnual(false)}
 					>
@@ -37,6 +37,7 @@ export function LuminaPricing() {
 					</button>
 					<button
 						type="button"
+						aria-pressed={annual}
 						className={annual ? "active" : ""}
 						onClick={() => setAnnual(true)}
 					>
@@ -58,12 +59,7 @@ export function LuminaPricing() {
 						key={plan.id}
 						className={`pricing-card ${plan.id.startsWith("pro") ? "featured" : ""}`}
 					>
-						{plan.id.startsWith("pro") && (
-							<span className="popular-label">
-								{l("a_little_more_possibility")}
-							</span>
-						)}
-						<span className="lm-kicker">{getPlanLabel(plan.name)}</span>
+						<h2>{getPlanLabel(plan.name)}</h2>
 						<p>{getPlanLabel(plan.description)}</p>
 						<div className="price">
 							<strong>

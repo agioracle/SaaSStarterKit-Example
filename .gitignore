@@ -40,3 +40,14 @@ evidence/
 performance-remediation-checks-*/
 src/routeTree.gen.ts
 .playwright-browsers/
+
+# Local design boards, screenshots and machine preferences
+.impeccable/review/
+.impeccable/before/
+.impeccable/mocks/
+.impeccable/config.local.json
+
+.impeccable/questions/
+.impeccable/direction-options.json
+
+.impeccable/direction-research.md

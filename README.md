@@ -25,7 +25,7 @@ npm ci
 npm run demo:local
 ```
 
-打开 `http://127.0.0.1:4173`。使用脚本显示的虚构账号 `e2e.member@example.invalid` / `E2eFixturePassword!23` 登录。界面持续标记 **LOCAL FIXTURE / 非 AI 生成**。这是独立 opt-in 本地测试副本，使用临时 D1/R2/KV、真实鉴权和额度；供应商仅返回本地原创几何图案，不发出真实邮件、AI 或支付请求。生成副本在 `.local-smoke/`，禁止部署或打包。Ctrl-C 停止。
+打开 `http://127.0.0.1:4173`。使用脚本显示的虚构账号 `e2e.member@example.invalid` / `E2eFixturePassword!23` 登录。界面持续标记 **LOCAL FIXTURE / 非 AI 生成**。这是独立 opt-in 本地测试副本，使用临时 D1/R2/KV、真实鉴权和额度；供应商仅返回本地原创几何图案，不发出真实邮件、AI 或支付请求。生成副本在 `.local-smoke/`，禁止部署或打包。Ctrl-C 停止。端口被占用时可使用 `E2E_PORT=4473 npm run demo:local`；测试命令也支持 `E2E_PORT`。
 
 测试场景提示词可加入 `[fixture:fail]`、`[fixture:unknown]`、`[fixture:pending]`。这些行为只存在于生成的本地测试副本。
 
@@ -56,7 +56,7 @@ npm run test:performance
 
 首次浏览器运行需 `npx playwright install chromium`；也可显式指定 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` 使用受支持的本机 Chrome。所有测试使用虚构账号，不能使用真实环境文件或远程数据库。CI 运行同样本地检查，无部署、远程迁移或真实供应商调用。
 
-[本轮验证与边界](docs/verification.md) · [文档索引](docs/README.md)
+[界面设计](DESIGN.md) · [交互改动](docs/ui-redesign.md) · [本轮验证与边界](docs/verification.md) · [文档索引](docs/README.md)
 
 示例政策：免费每 UTC 月 10 张/保留 30 条，付费 200/500，默认用户并发 2。价格为演示配置；每日安全单位不是美元，也不是供应商硬账单上限。公开运营前须完成真实服务验收、成本预算、模型条款和运营主体/法律文本配置。
 

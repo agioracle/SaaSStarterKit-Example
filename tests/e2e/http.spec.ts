@@ -1,3 +1,4 @@
+import { fixtureOrigin } from "./environment";
 import { test, expect } from "@playwright/test";
 test("@http built Worker health and native bindings", async ({ request }) => {
 	const response = await request.get("/api/health");
@@ -51,7 +52,7 @@ test("@http authenticated SSR uses verified D1 session", async ({
 	request,
 }) => {
 	const login = await request.post("/api/auth/sign-in/email", {
-		headers: { origin: "http://127.0.0.1:4173" },
+		headers: { origin: fixtureOrigin },
 		data: {
 			email: "e2e.member@example.invalid",
 			password: "E2eFixturePassword!23",
@@ -133,7 +134,7 @@ test("@http async API failures preserve safe status and JSON envelope", async ({
 	request,
 }) => {
 	await request.post("/api/auth/sign-in/email", {
-		headers: { origin: "http://127.0.0.1:4173" },
+		headers: { origin: fixtureOrigin },
 		data: {
 			email: "e2e.member@example.invalid",
 			password: "E2eFixturePassword!23",
@@ -149,13 +150,13 @@ test("@http async API failures preserve safe status and JSON envelope", async ({
 		requestId: expect.any(String),
 	});
 	const invalid = await request.post("/api/ai", {
-		headers: { origin: "http://127.0.0.1:4173" },
+		headers: { origin: fixtureOrigin },
 		data: { task: "summarize", text: "short" },
 	});
 	expect(invalid.status()).toBe(410);
 	expect(await invalid.json()).toMatchObject({ code: "HTTP_ERROR" });
 	const unconfigured = await request.post("/api/ai", {
-		headers: { origin: "http://127.0.0.1:4173" },
+		headers: { origin: fixtureOrigin },
 		data: { task: "summarize", text: "a".repeat(80) },
 	});
 	expect(unconfigured.status()).toBe(410);
@@ -220,7 +221,7 @@ test("@http readiness is read-only, minimal publicly and admin-scoped in detail"
 	expect((await request.get("/api/admin/readiness")).status()).toBe(401);
 	const memberLogin = await request.post("/api/auth/sign-in/email", {
 		headers: {
-			origin: "http://127.0.0.1:4173",
+			origin: fixtureOrigin,
 			"cf-connecting-ip": "192.0.2.100",
 		},
 		data: {
@@ -232,14 +233,14 @@ test("@http readiness is read-only, minimal publicly and admin-scoped in detail"
 	expect((await request.get("/api/admin/readiness")).status()).toBe(403);
 	await request.post("/api/auth/sign-out", {
 		headers: {
-			origin: "http://127.0.0.1:4173",
+			origin: fixtureOrigin,
 			"cf-connecting-ip": "192.0.2.100",
 		},
 		data: {},
 	});
 	const adminLogin = await request.post("/api/auth/sign-in/email", {
 		headers: {
-			origin: "http://127.0.0.1:4173",
+			origin: fixtureOrigin,
 			"cf-connecting-ip": "192.0.2.100",
 		},
 		data: {

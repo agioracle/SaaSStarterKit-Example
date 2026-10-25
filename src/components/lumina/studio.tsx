@@ -72,6 +72,7 @@ export function StudioPage({
 	userId: string;
 }) {
 	const styles = styleOptions();
+	const canvasRef = useRef<HTMLElement>(null);
 	const client = useQueryClient();
 	const config = useGenerationConfig();
 	const [prompt, setPrompt] = useState(() =>
@@ -188,6 +189,11 @@ export function StudioPage({
 		}
 		submitted.current = true;
 		setBusy(true);
+		requestAnimationFrame(() => {
+			canvasRef.current?.focus({ preventScroll: true });
+			if (matchMedia("(max-width: 760px)").matches)
+				canvasRef.current?.scrollIntoView({ block: "start", behavior: "auto" });
+		});
 		setError("");
 		try {
 			const result = await generationRequest<GenerationResult>(
@@ -235,7 +241,6 @@ export function StudioPage({
 		<div className="lm-studio-page">
 			<div className="lm-page-heading">
 				<div>
-					<span className="lm-kicker">{l("your_creative_space")}</span>
 					<h1>{l("a_good_place_to_begin")}</h1>
 					<p>
 						{l("follow_a_thought_find_a_new_direction_make_something_yours")}
@@ -277,12 +282,16 @@ export function StudioPage({
 					</span>
 				</Notice>
 			)}
+			{usage && <UsageMeter usage={usage} compact />}
+			<a className="lm-result-jump" href="#studio-result">
+				{l("your_canvas_short")}
+				<ArrowRight size={16} />
+			</a>
 			<div className="lm-studio-grid">
 				<section className="lm-controls">
 					<div className="lm-panel-title">
 						<WandSparkles size={17} />
 						<h2>{l("the_starting_point")}</h2>
-						<span>01</span>
 					</div>
 					<form
 						onSubmit={(event) => {
@@ -322,14 +331,24 @@ export function StudioPage({
 									placeholder={l(
 										"a_quiet_little_house_by_the_sea_warm_morning_light_soft_film_grain",
 									)}
-									rows={6}
+									rows={4}
 									maxLength={2000}
 									required
 									aria-describedby="prompt-hint"
+									onKeyDown={(event) => {
+										if (
+											(event.metaKey || event.ctrlKey) &&
+											event.key === "Enter"
+										) {
+											event.preventDefault();
+											event.currentTarget.form?.requestSubmit();
+										}
+									}}
 								/>
 							</label>
 							<p className="lm-field-hint" id="prompt-hint">
-								{l("include_the_subject_setting_light_and_feeling")}
+								{l("include_the_subject_setting_light_and_feeling")}{" "}
+								<span className="lm-shortcut">{l("form_hint")}</span>
 							</p>
 							<button
 								type="button"
@@ -382,8 +401,8 @@ export function StudioPage({
 								</p>
 							)}
 							<div className="lm-field">
-								<span>{l("aspect_ratio")}</span>
-								<div className="lm-ratios">
+								<span id="ratio-label">{l("aspect_ratio")}</span>
+								<fieldset className="lm-ratios" aria-labelledby="ratio-label">
 									{(model?.aspectRatios || ["1:1"]).map((ratio) => (
 										<button
 											type="button"
@@ -398,7 +417,7 @@ export function StudioPage({
 											<small>{ratio}</small>
 										</button>
 									))}
-								</div>
+								</fieldset>
 								<small className="lm-field-hint">
 									{model?.provider === "cloudflare"
 										? l("this_model_supports_square_images_only")
@@ -410,7 +429,10 @@ export function StudioPage({
 									{l("creative_direction")}
 									<small>{l("prompt_modifier")}</small>
 								</span>
-								<div className="lm-styles">
+								<fieldset
+									className="lm-styles"
+									aria-label={l("creative_direction")}
+								>
 									{styles.map((item) => (
 										<button
 											type="button"
@@ -422,7 +444,7 @@ export function StudioPage({
 											{item.label}
 										</button>
 									))}
-								</div>
+								</fieldset>
 								{modifier && (
 									<small className="lm-field-hint">
 										{l("added_to_your_prompt")} {modifier}
@@ -500,16 +522,21 @@ export function StudioPage({
 							{l("one_image_saved_privately_in_your_library")}
 						</p>
 					</form>
-					{usage && <UsageMeter usage={usage} />}
 				</section>
-				<section className="lm-preview">
+				<section
+					className="lm-preview"
+					ref={canvasRef}
+					id="studio-result"
+					tabIndex={-1}
+					aria-label={l("your_canvas")}
+				>
 					<div className="lm-panel-title">
 						<Image size={17} />
 						<h2>{l("your_canvas")}</h2>
 						{job ? (
 							<JobStatus job={job} />
 						) : (
-							<span>{l("ready_when_you_are")}</span>
+							<span className="lm-status">{l("ready_when_you_are")}</span>
 						)}
 					</div>
 					{error && <Notice kind="error">{productError(error)}</Notice>}

@@ -20,3 +20,7 @@ Dependencies are installed through npm and retain their own licenses/notices. Th
 The lockfile records exact versions. Consult the installed packages' LICENSE/NOTICE files for complete terms, including transitive dependencies, before redistributing compiled dependencies. Base UI wrappers are independently assembled; familiar component names do not claim identical shadcn or proprietary template source.
 
 The bundled logo and social cards are original template assets under the application license. No remote font files or customer testimonial assets are bundled. Illustrative sample layouts are opt-in examples, not customer endorsements.
+
+## Self-hosted typeface
+
+Hanken Grotesk variable font is distributed under the SIL Open Font License 1.1. Copyright 2021 The Hanken Grotesk Project Authors. Source: https://github.com/google/fonts/tree/main/ofl/hankengrotesk. The full license and upstream copyright notice are preserved in `public/fonts/OFL-Hanken-Grotesk.txt`.

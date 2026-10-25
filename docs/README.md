@@ -8,6 +8,7 @@
 4. [部署](deployment.md)：D1/R2/KV 绑定、隔离资源、迁移和发布步骤。
 5. [运维和旧版升级](operations.md)：未知状态、离线排空、备份、迁移与回退。
 6. [开发参考](development.md)：最新模板的组件和扩展契约，产品入口见上面的模块地图。
-7. [验证](verification.md)与[真实供应商验收](provider-acceptance.md)。
+7. [界面规范](../DESIGN.md)与[交互改动](ui-redesign.md)。
+8. [验证](verification.md)与[真实供应商验收](provider-acceptance.md)。
 
 来源模板的适配器参考仍保留在模块旁边。Lumina 只开放受鉴权保护的 `/api/generations`；模板 `/api/ai` 与经它转发的通用 facade 返回 410，不构成另一套可调用产品接口。
